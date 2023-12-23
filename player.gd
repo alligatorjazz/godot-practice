@@ -27,7 +27,7 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
-	
+
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 
@@ -46,7 +46,7 @@ func _process(delta):
 		upside_down = false;
 	else:
 		$AnimatedSprite2D.flip_v = upside_down;
-		
+
 	if velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
 		facing_back = false;
@@ -54,15 +54,14 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = true
 		facing_back = true;
 	else:
-		$AnimatedSprite2D.flip_h = facing_back;			
+		$AnimatedSprite2D.flip_h = facing_back;
 
 func _on_body_entered(body):
 	hide()
 	hit.emit()
-	$CollisionShape2D.set_deffered("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func start(pos: Vector2):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-	
